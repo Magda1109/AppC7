@@ -26,5 +26,10 @@ public class Employee
     {
         this.grades.Add(number);
     }
+
+    public void RemovePoints(int number)
+    {
+        this.grades.Add(-number);
+    }
 }
 
