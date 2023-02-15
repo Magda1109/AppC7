@@ -1,6 +1,6 @@
 namespace AppC7.Tests
 {
-    public class Tests
+    public class EmployeeTests
     {
         [Test]
         public void CheckAddingPoints()

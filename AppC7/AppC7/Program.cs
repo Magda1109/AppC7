@@ -1,4 +1,6 @@
-﻿using AppC7;
+﻿using System.Security.Cryptography.X509Certificates;
+using AppC7;
+
 
 Employee emp1 = new Employee("Jan", "Kowalski", 52);
 Employee emp2 = new Employee("Katarzyna", "nowak", 25);
