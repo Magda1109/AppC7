@@ -6,7 +6,7 @@ public class Employee
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
 
-    
+
     public float Points
     {
         get
@@ -23,7 +23,41 @@ public class Employee
 
     public void AddGrade(float grade)
     {
-        this.grades.Add(grade);
+        if (grade >= 0 && grade <= 100)
+        {
+            this.grades.Add(grade);
+        }
+        else
+        {
+            Console.WriteLine("Invalid grade.");
+        }
+    }
+
+    public void AddGrade(double grade)
+    {
+        if (grade >= 0 && grade <= 100)
+        {
+            
+            float floatGrade = (float)grade;
+            this.grades.Add(floatGrade);
+        }
+        else
+        {
+            Console.WriteLine("Invalid grade.");
+        }
+    }
+
+    public void AddGrade(string grade)
+    {
+        var success = float.TryParse(grade, out float result);
+        if (success)
+        {
+            this.AddGrade(result);
+        }
+        else
+        {
+            Console.WriteLine("Invalid grade.");
+        }
     }
 
     public void RemovePoints(int number)
@@ -46,7 +80,7 @@ public class Employee
         }
 
         statistics.Average /= this.grades.Count;
-        
+
         return statistics;
     }
 }

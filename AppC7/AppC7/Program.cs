@@ -1,7 +1,7 @@
 ﻿using AppC7;
 
 var employee = new Employee("Adam", "Kowalski", 24);
-employee.AddGrade(11);
+employee.AddGrade(77);
 employee.AddGrade(14);
 employee.AddGrade(22);
 var statistics = employee.GetStatistics();
