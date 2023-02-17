@@ -33,7 +33,7 @@ public class Employee
             }
             else
             {
-                Console.WriteLine("Invalid grade.");
+                throw new Exception("Invalid grade.");
             }
         }
         else if (!success)
@@ -56,13 +56,12 @@ public class Employee
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Incorrect value");
-                    break;
+                    throw new Exception("Incorrect letter"); // jak jest throw, to nie musimy dawać break;
             }
         }
         else
         {
-            Console.WriteLine("Invalid grade.");
+            throw new Exception("Invalid grade");
         }
     }
 
