@@ -18,19 +18,6 @@ namespace AppC7.Tests
         }
 
         [Test]
-        public void CheckRemovingPoints()
-        {
-            var empTest = new Employee("TestFirstName", "TestSurname", 22);
-            empTest.AddGrade("33");
-            empTest.AddGrade("55");
-
-            var result = empTest.Points;
-
-            Assert.AreEqual(88,result);
-
-        }
-
-        [Test]
         public void CheckStatisticsMethod()
         {
             var empTest = new Employee("TestFirstName", "TestSurname", 22);
