@@ -2,13 +2,14 @@
 
 namespace AppC7;
 
-public class Employee
+public class Employee : Person
 {
     private List<float> grades = new List<float>();
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
 
-
+    public Employee(string firstName, string lastName, int age) : base(firstName, lastName, age)
+    {
+    }
+   
     public float Points
     {
         get
@@ -17,11 +18,6 @@ public class Employee
         }
     }
 
-    public Employee(string firstName, string lastName, int age)
-    {
-        this.FirstName = firstName;
-        this.LastName = lastName;
-    }
     public void AddGrade(string grade)
     {
         var success = float.TryParse(grade, out float result);
