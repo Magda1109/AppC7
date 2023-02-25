@@ -2,11 +2,11 @@
 
 namespace AppC7;
 
-public class Employee : Person
+public class Employee : IEmployee
 {
     private List<float> grades = new List<float>();
 
-    public Employee(string firstName, string lastName, int age) : base(firstName, lastName, age)
+    public Employee(string firstName, string lastName, int age) 
     {
     }
    
@@ -98,5 +98,9 @@ public class Employee : Person
 
         return statistics;
     }
+
+    public string FirstName { get; private set; }
+    public string LastName { get; }
+    public int Age { get; }
 }
 
