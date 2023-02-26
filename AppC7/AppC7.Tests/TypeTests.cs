@@ -6,16 +6,16 @@
 
         public void TestReferenceType()
         {
-            Employee emp1 = GetEmployee("Anna", "Smith", 57);
+            EmployeeInMemory emp1 = GetEmployee("Anna", "Smith", 57);
             var emp2 = GetEmployee("Anna", "Smith", 57);
             var emp3 = GetEmployee("Adam", "Miller", 33);
 
             Assert.AreNotEqual(emp1, emp2);
         }
 
-        private Employee GetEmployee(string firstName, string lastName, int age)
+        private EmployeeInMemory GetEmployee(string firstName, string lastName, int age)
         {
-            return new Employee(firstName, lastName, age);
+            return new EmployeeInMemory(firstName, lastName, age);
         }
 
         [Test]

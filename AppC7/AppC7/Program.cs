@@ -1,8 +1,11 @@
 ﻿using AppC7;
 
-var employee = new Employee("Adam", "Kowalski", 24);
+var employee = new EmployeeInFile("Adam", "Kowalski", 24);
 
-while(true)
+employee.AddGrade("100");
+employee.AddGrade("0");
+
+while (true)
 {
     Console.WriteLine("Provide grade");
     var input = Console.ReadLine();
@@ -23,8 +26,7 @@ while(true)
     {
         Console.WriteLine("*************************");
     }
-
-} 
+}
 
 var statistics = employee.GetStatistics();
 
