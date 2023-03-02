@@ -2,9 +2,6 @@
 
 var employee = new EmployeeInFile("Adam", "Kowalski", 24);
 
-employee.AddGrade("100");
-employee.AddGrade("0");
-
 while (true)
 {
     Console.WriteLine("Provide grade");

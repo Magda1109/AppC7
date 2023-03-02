@@ -2,8 +2,57 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
+
         private const string fileName = "grades.txt";
         public override void AddGrade(string grade)
+        {
+            var success = float.TryParse(grade, out float result);
+            if (success)
+            {
+                if (result >= 0 && result <= 100)
+                {
+                    SaveGradeToFile(result, fileName);
+                }
+                else
+                {
+                    throw new Exception("Invalid grade.");
+                }
+            }
+            else if (!success)
+            {
+                switch (grade)
+                {
+                    case "A":
+                    case "a":
+                        SaveGradeToFile(100, fileName);
+                        break;
+                    case "B":
+                    case "b":
+                        SaveGradeToFile(80, fileName);
+                        break;
+                    case "C":
+                    case "c":
+                        SaveGradeToFile(60, fileName);
+                        break;
+                    case "D":
+                    case "d":
+                        SaveGradeToFile(40, fileName);
+                        break;
+                    case "E":
+                    case "e":
+                        SaveGradeToFile(20, fileName);
+                        break;
+                    default:
+                        throw new Exception("Incorrect letter"); // jak jest throw, to nie musimy dawać break;
+                }
+            }
+            else
+            {
+                throw new Exception("Invalid grade");
+            }
+        }
+
+        private void SaveGradeToFile(float grade, string fileName)
         {
             using (var writer = File.AppendText(fileName))
             {
@@ -55,16 +104,16 @@
 
             switch (statistics.Average)
             {
-                case var average when average >= 80:
+                case >= 80:
                     statistics.AverageLetter = 'A';
                     break;
-                case var average when average >= 60:
+                case >= 60:
                     statistics.AverageLetter = 'B';
                     break;
-                case var average when average >= 40:
+                case >= 40:
                     statistics.AverageLetter = 'C';
                     break;
-                case var average when average >= 20:
+                case >= 20:
                     statistics.AverageLetter = 'D';
                     break;
                 default:
