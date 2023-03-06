@@ -1,7 +1,11 @@
-﻿namespace AppC7;
+﻿using static AppC7.EmployeeInMemory;
+
+namespace AppC7;
 
 public abstract class EmployeeBase : IEmployee
 {
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+    public abstract event GradeAddedDelegate GradeAdded;
     public EmployeeBase(string firstName, string lastName, int age)
     {
         FirstName = firstName;
@@ -10,7 +14,6 @@ public abstract class EmployeeBase : IEmployee
     }
 
     public abstract void AddGrade(string grade);
-
     public abstract Statistics GetStatistics();
 
     public string FirstName { get; private set;  }

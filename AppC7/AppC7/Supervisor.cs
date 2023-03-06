@@ -61,6 +61,8 @@ public class Supervisor : IEmployee
         }
     }
 
+    public event IEmployee.GradeAddedDelegate? GradeAdded;
+
     public Statistics GetStatistics()
     {
         throw new NotImplementedException();

@@ -2,10 +2,15 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        //public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+        public override event GradeAddedDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
-        public EmployeeInMemory(string firstName, string lastName, int age) 
+        public EmployeeInMemory(string firstName, string lastName, int age)
             : base(firstName, lastName, age)
         {
+
         }
 
         public override void AddGrade(string grade)
@@ -16,6 +21,11 @@
                 if (result >= 0 && result <= 100)
                 {
                     this.grades.Add(result);
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
                 else
                 {

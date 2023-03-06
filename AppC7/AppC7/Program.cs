@@ -1,6 +1,12 @@
 ﻿using AppC7;
 
-var employee = new EmployeeInFile("Adam", "Kowalski", 24);
+var employee = new EmployeeInMemory("Adam", "Kowalski", 24);
+employee.GradeAdded += EmployeeGradeAdded; //metoda, która ma zostać odpalona, gdy event się zadzieje
+                                              
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("New grade added");
+}
 
 while (true)
 {
