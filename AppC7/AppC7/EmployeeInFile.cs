@@ -2,9 +2,14 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
+        private const string fileName = "grades.txt";
+
         public override event GradeAddedDelegate GradeAdded;
 
-        private const string fileName = "grades.txt";
+        public EmployeeInFile(string firstName, string lastName, int age) : base(firstName, lastName, age)
+        {
+        }
+
         public override void AddGrade(string grade)
         {
             var success = float.TryParse(grade, out float result);
@@ -58,15 +63,11 @@
             using (var writer = File.AppendText(fileName))
             {
                 writer.WriteLine(grade);
-                if (GradeAdded != null)
-                {
-                    GradeAdded(this, new EventArgs());
+            }
 
-                    if (GradeAdded != null)
-                    {
-                        GradeAdded(this, new EventArgs());
-                    }
-                }
+            if (GradeAdded != null)
+            {
+                GradeAdded(this, new EventArgs());
             }
         }
 
@@ -99,43 +100,13 @@
         private Statistics CountStatistics(List<float> grades)
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
             foreach (var grade in grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
-            }
-
-            statistics.Average /= grades.Count;
-
-            switch (statistics.Average)
-            {
-                case >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
+                statistics.AddGrade(grade);
             }
 
             return statistics;
-        }
-
-        public EmployeeInFile(string firstName, string lastName, int age) : base(firstName, lastName, age)
-        {
         }
     }
 }

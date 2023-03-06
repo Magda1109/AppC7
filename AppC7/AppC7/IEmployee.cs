@@ -1,4 +1,6 @@
-﻿namespace AppC7;
+﻿using static AppC7.EmployeeBase;
+
+namespace AppC7;
 
 public interface IEmployee
 {
@@ -7,4 +9,5 @@ public interface IEmployee
     string FirstName { get; }
     string LastName { get; }
     int Age { get; }
+    event GradeAddedDelegate GradeAdded;
 }
